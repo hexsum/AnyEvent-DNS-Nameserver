@@ -1,5 +1,5 @@
 package AnyEvent::DNS::Nameserver;
-our $VERSION = "1.0";
+our $VERSION = "1.1";
 use Net::DNS;
 use AnyEvent::Handle::UDP;
 use Socket qw(sockaddr_in inet_ntoa);
@@ -154,7 +154,7 @@ AnyEvent::DNS::Nameserver - DNS server class using AnyEvent
     use AnyEvent::DNS::Nameserver;
     my $nameserver = new Net::DNS::Nameserver(
         LocalAddr        => ['192.168.1.1' , '127.0.0.1' ],
-        LocalPort        => "5353",
+        LocalPort        => "53",
         ReplyHandler => \&reply_handler,
         Verbose          => 1,
         Truncate         => 0
