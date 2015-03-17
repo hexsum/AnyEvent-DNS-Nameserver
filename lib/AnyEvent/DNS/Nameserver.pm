@@ -173,9 +173,9 @@ AnyEvent::DNS::Nameserver only support udp query and answer by now
 
 =head1 SEE ALSO
 
-https://github.com/sjdy521/AnyEvent-DNS-Nameserver
+L<https://github.com/sjdy521/AnyEvent-DNS-Nameserver>
 
-Net::DNS::Nameserver
+L<Net::DNS::Nameserver>
 
 =head1 AUTHOR
 
