@@ -153,7 +153,7 @@ AnyEvent::DNS::Nameserver - DNS server class using AnyEvent
 
     use AnyEvent::DNS::Nameserver;
     my $nameserver = new Net::DNS::Nameserver(
-        LocalAddr        => ['::1' , '127.0.0.1' ],
+        LocalAddr        => ['192.168.1.1' , '127.0.0.1' ],
         LocalPort        => "5353",
         ReplyHandler => \&reply_handler,
         Verbose          => 1,
