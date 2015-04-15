@@ -26,5 +26,5 @@ WriteMakefile(
       (
        #ABSTRACT_FROM  => 'lib/Webqq/Client.pm', # retrieve abstract from module
        ABSTRACT       => 'AnyEvent::DNS::Nameserver - DNS server class using AnyEvent',
-       AUTHOR         => 'Perfi <sjdy521@163.com>') : ()),
+       AUTHOR         => 'sjdy521 <sjdy521@163.com>') : ()),
 );

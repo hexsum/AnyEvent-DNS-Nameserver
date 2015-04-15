@@ -179,7 +179,7 @@ L<Net::DNS::Nameserver>
 
 =head1 AUTHOR
 
-Perfi, E<lt>sjdy521@163.comE<gt>
+sjdy521, E<lt>sjdy521@163.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
