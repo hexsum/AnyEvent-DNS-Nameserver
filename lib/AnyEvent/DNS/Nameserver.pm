@@ -1,8 +1,10 @@
 package AnyEvent::DNS::Nameserver;
-our $VERSION = "1.1";
+our $VERSION = "1.2";
 use Net::DNS;
 use AnyEvent::Handle::UDP;
-use Socket qw(sockaddr_in inet_ntoa);
+use Socket qw(sockaddr_in sockaddr_in6 inet_ntop sockaddr_family AF_INET6);
+use strict;
+
 sub new {
     my $class = shift;
     my %p = @_;
@@ -23,8 +25,9 @@ sub new {
             bind    =>  [$la,$self->{LocalPort}],
             on_recv => sub {
                 my ($data, $ae_handle, $client_addr) = @_;
-                my ($peerport, $peerhost) = sockaddr_in($client_addr);
-                $peerhost = inet_ntoa($peerhost);
+                my $family = sockaddr_family($client_addr);
+                my ($peerport, $peerhost) = ( $family == AF_INET6 ) ? sockaddr_in6($client_addr) : sockaddr_in($client_addr);
+                $peerhost = inet_ntop($family, $peerhost);
                 my $query = new Net::DNS::Packet( \$data );
                 if ( my $err = $@ ) {
                     print "Error decoding query packet: $err\n" if $self->{Verbose};
