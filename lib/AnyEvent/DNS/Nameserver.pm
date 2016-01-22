@@ -16,7 +16,7 @@ sub new {
     $self->{Truncate}       = $p{Truncate}  || 1;
     $self->{IdleTimeout}    = $p{IdleTimeout} || 120;
     $self->{NotifyHandler}  = $p{NotifyHandler};
-
+    $self->{NoReply}        = $p{NoReply};
     $self->{watchers}       = [];
 
     my @LocalAddr =ref $self->{LocalAddr} eq 'ARRAY'?@{$self->{LocalAddr}}:($self->{LocalAddr});
@@ -31,6 +31,10 @@ sub new {
                 my $query = new Net::DNS::Packet( \$data );
                 if ( my $err = $@ ) {
                     print "Error decoding query packet: $err\n" if $self->{Verbose};
+                    if ($self->{NoReply}) {
+                        print "Ignoring query from $peerhost:$peerport\n" if $self->{Verbose};
+                        return;
+                    }
                     undef $query; 
                 }   
                 my $conn = {
